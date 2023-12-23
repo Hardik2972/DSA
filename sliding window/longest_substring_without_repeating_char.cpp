@@ -13,6 +13,8 @@ int lengthOfLongestSubstring(string st) {
     while(r<size){
         if(v[st[r]]!=-1){
             l=max(v[st[r]]+1,l);
+            // for understanding the concept of max here dry run on the "abcba"
+            // basiscally you do not want to go to back if you have crossed b because of 'a' 
         }
         len=max(len,r-l+1);
         v[st[r]]=r;
