@@ -54,3 +54,31 @@ public:
         return ans;
     }
 };
+
+// my z function 
+vector<int> Zfunction(string arr){
+    int left = 0;
+    int right =0;
+    vector<int> z(arr.size());
+    for(int k = 1;k<arr.size();k++){
+        if(k>right){
+            left = right = k;
+            while(right<arr.size() && arr[right] == arr[right-left]) right++;
+            z[k] = right-left;
+            right--;
+        }
+        else{
+            int k1 = k-left;
+            if(z[k1]+k<=right){
+                z[k]=z[k1];
+            }
+            else{
+                left = k;
+                while(right<arr.size() && arr[right] == arr[right-left]) right++;
+                z[k] = right-left;
+                right--;
+            }
+        }
+    }
+    return z;
+}
